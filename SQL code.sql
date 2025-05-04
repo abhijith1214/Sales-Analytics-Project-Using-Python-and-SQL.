@@ -18,7 +18,7 @@ select "Order Id","Order Date" from "Orders_data" where "Category"='Technology' 
 
 
 
---write query to find average order value
+--Write query to find average order value
 select cast(avg("Quantity"*"Unit Selling Price") as decimal(10,2)) as avg from "Orders_data";
 
 
@@ -47,7 +47,7 @@ select "Product Id",sum("Total Profit") as Total_profit from "Orders_data" group
 
 
 
---give alternative of above using window function.
+--Give alternative of above using window function.
 
 select * from (select "Product Id",sum("Total Profit") as total_profit,Row_number() over(order by sum("Total Profit") desc) as row_no from "Orders_data" group by "Product Id") where row_no<=10;
 
